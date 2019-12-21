@@ -19,9 +19,9 @@ reference-section-title: true
 link-citations: true
 csl: ../../docum/revista-de-filologia-espanola.csl
 css:
-  - style/color-vars-light.css
-  - style/main.css
-  - style/style.css
+  - https://github.com/ctafur80/circ-systems-caltech-md/style/color-vars-light.css
+  - https://github.com/ctafur80/circ-systems-caltech-md/style/main.css
+  - https://github.com/ctafur80/circ-systems-caltech-md/style/style.css
 script:
   - "window.MathJax = { tex: { tags: 'ams' } };"
 ...
