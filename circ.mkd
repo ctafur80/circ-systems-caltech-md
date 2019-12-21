@@ -199,7 +199,7 @@ Si tenemos una trayectoria cerrada $L$ y hacemos la integral de línea de
 $\vec{E}$ en $L$, esa integral es proporcional a la variación del flujo
 magnético en la superficie interna a esa trayectoria.
 
-![Tercera Ley de Maxwell](figuras/fig-max-3.png){#fig-max-3 width="80px"}
+![Tercera Ley de Maxwell](figuras/fig-max-3.png){#fig-max-3 width="180px"}
 
 $$ \oint_L \vec{E}\,\text{d}\vec{l} + \frac{\text{d}}{\text{d} t} \iint_S
 \vec{B}\,\text{d}\vec{s} = 0 $$
@@ -212,7 +212,7 @@ div
 :   Es la integral del flujo que sale de un volumen dividida por ese volumen
     cuando ese volumen tiende a $0$.
 
-    ![Volumen infinitesimal](figuras/fig-vol-inf.png){#fig-vol-inf width="30px"}
+    ![Volumen infinitesimal](figuras/fig-vol-inf.png){#fig-vol-inf width="130px"}
 
     $$ \vec{\nabla} \cdot \vec{D} = \lim_{V \to 0} \frac{1}{V} \oint_V
     \vec{D}\,d\vec{s} $$
@@ -260,7 +260,7 @@ La ley de Ampère original, sin la componente $\partial \vec{D}/\partial t$,
 decía que el campo magnético en una trayectoria cerrada generada eso es igual a
 la corriente total en el interior.
 
-![Ley de Ampère](figuras/fig-ampere-law.png){#fig-ampere-law width="60px"}
+![Ley de Ampère](figuras/fig-ampere-law.png){#fig-ampere-law width="160px"}
 
 $$ \oint_L \vec{H}\,\text{d}\vec{l} $$
 
