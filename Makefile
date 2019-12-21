@@ -11,7 +11,7 @@ TEMPLATEDIR=$(STYLEDIR)/pandoc-templates
 BIBFILE=$(BASEDIR)/../books.bib
 
 
-FILENAME=circ
+FILENAME=index
 FORMATFROM=markdown+yaml_metadata_block+raw_tex+example_lists+multiline_tables+grid_tables+fenced_divs+smart+native_divs+native_spans+fenced_code_attributes+citations+tex_math_dollars
 
 
