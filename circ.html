@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-ES" xml:lang="es-ES">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Carlos E. Tafur Egido" />
+  <meta name="dcterms.date" content="22/05/2019" />
+  <meta name="keywords" content="electromagnetismo, electrotecnia, electricidad" />
+  <title>Circuitos y sistemas</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="/circ-systems-caltech-md/style/color-vars-light.css" />
+  <link rel="stylesheet" href="/circ-systems-caltech-md/style/main.css" />
+  <link rel="stylesheet" href="/circ-systems-caltech-md/style/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Circuitos y sistemas</h1>
+<p class="author">Carlos E. Tafur Egido</p>
+<p class="date">22/05/2019</p>
+</header><input type="checkbox" id="nav-toggle" class="nav-toggle">
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#introducción">Introducción</a></li>
+<li><a href="#fundamentos-de-circuitos">Fundamentos de circuitos</a>
+<ul>
+<li><a href="#introducción-1">Introducción</a></li>
+<li><a href="#repaso-de-las-ecuaciones-de-maxwell">Repaso de las ecuaciones de Maxwell</a>
+<ul>
+<li><a href="#primera-ecuación-de-maxwell">Primera ecuación de Maxwell</a></li>
+<li><a href="#segunda-ecuación-de-maxwell">Segunda ecuación de Maxwell</a></li>
+<li><a href="#tercera-ecuación-de-maxwell">Tercera ecuación de Maxwell</a></li>
+<li><a href="#cuarta-ecuación-de-maxwell">Cuarta ecuación de Maxwell</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav><label for="nav-toggle" class="nav-toggle-label"><span id="square"></span></label><article>
+<section id="introducción" class="level1">
+<h1>Introducción</h1>
+<p>Un libro que he seguido es hayt-kemm-circ.</p>
+<p>La asignatura se llama Circuits and Systems. El código de la asignatura es EE44. La universidad en la que se imparte es Caltech. El profesor es Ali Hajimiri.</p>
+<p>Esta asignatura engloba dos materias en una. Normalmente, en las universidades siempre se han estudiado por separado las materias que engloban esta asignatura: teoría de circuitos y teoría de sistemas. Aquí, se ven juntas, pues tienen mucha relación. Creo que la teoría de circuitos podría considerarse que está incluida en la teoría de sistemas.</p>
+<p>En cuanto al recorrido de la asignatura, veamos por encima los contenidos.</p>
+<p>Se comenzará con la teoría de circuitos siguiendo el itinerario típico, como el que se sigue, por ejemplo, en el libro de Nilsson y Riedel. Cuando lleguemos al análisis en el dominio del tiempo, se incluirá el análisis de sistemas.</p>
+<p>Según el profesor, esta forma innovadora de abordar estas materias no lo hace por la importancia de la materia en sí, sino porque este conocimiento nos permite también analizar circuitos con excitación de cualquier tipo, en general.</p>
+<p>Luego, se estudiará la teoría de operadores. Luego, el análisis en el dominio de la frecuencia. Se usará el dominio de la frecuencia compleja. Luego, funciones de transferencia, ceros y polos. La transformada de Laplace y la de Fourier.</p>
+<p>La clave está en que estamos haciendo modelos matemáticos del mundo físico.</p>
+</section>
+<section id="fundamentos-de-circuitos" class="level1">
+<h1>Fundamentos de circuitos</h1>
+<p>Definiciones // Propiedades de grafos // Corriente y voltaje // Potencia y energía</p>
+<section id="introducción-1" class="level2">
+<h2>Introducción</h2>
+<p>Esta asignatura estudia un subconjunto de los sistemas eléctricos que pueden estudiarse de forma simplificada respecto a los sistemas eléctricos en general. Es, por tanto, una asignatura en la que se estudia la ciencia aplicada. Por tanto, se considerarán como prerrequisitos principales una asignatura de electromagnetismo clásico y de cálculo de nivel de ingeniería o de física. Así mismo, se usarán explicaciones divulgativas sobre los fenómenos microscópicos de la materia (átomos, electrones, etc.), pero no se necesitará tener conocimientos rigurosos en ese campo.</p>
+</section>
+<section id="repaso-de-las-ecuaciones-de-maxwell" class="level2">
+<h2>Repaso de las ecuaciones de Maxwell</h2>
+<p>Como sabrá, los fenómenos del electromagnetismo clásico se basan en las ecuaciones de Maxwell del electromagnetismo. En la teoría de circuitos, sin embargo, no se usan las ecuaciones de Maxwell a la hora de trabajar, sino una serie de ecuaciones que son más sencillas: no son ecuaciones diferenciales de vectores. Justificaremos por qué podemos simplificar, en nuestro estudio de los circuitos eléctricos, estas ecuaciones y obtener otras más sencillas.</p>
+<p>Las ecuaciones de Maxwell del electromagnetismo se suelen representar mediante 4 ecuaciones, aunque, en cursos más avanzados, se pueden representar en 2, o incluso en 1. Aquí, la representaremos como las 4 ecuaciones <span class="math inline">\(\ref{eq-maxwell-1}\)</span>, <span class="math inline">\(\ref{eq:maxwell-2}\)</span>, <span class="math inline">\(\ref{eq:maxwell-faraday}\)</span> y <span class="math inline">\(\ref{eq:ley-ampere-mod}\)</span>.</p>
+<p><span class="math display">\[\begin{align}
+    \vec{\nabla} \cdot \vec{D}                                        &amp;=
+      \rho                                                            &amp;
+      \label{eq-maxwell-1} \\
+    \vec{\nabla} \cdot \vec{B}                                        &amp;=
+      0                                                               &amp;
+      \label{eq:maxwell-2} \\
+    \vec{\nabla} \times \vec{E} + \frac{\partial \vec{B}}{\partial t} &amp;=
+      0                                                               &amp;
+      \tag{Ley de Faraday}\label{eq:maxwell-faraday} \\
+    \vec{\nabla} \times \vec{H} - \frac{\partial \vec{D}}{\partial t} &amp;=
+      \vec{J}                                                         &amp;
+      \tag{Ley de Ampère Modificada}\label{eq:ley-ampere-mod}
+  \end{align}\]</span></p>
+<p>Como recordatorio, aclararemos esto.</p>
+<p><span class="math inline">\(\vec{E}\)</span> es el campo electrostático.</p>
+<p><span class="math inline">\(\vec{D}\)</span> es el desplazamiento eléctrico, que es igual a <span class="math inline">\(\vec{D} = \epsilon \vec{E}\)</span>.</p>
+<p><span class="math inline">\(\epsilon\)</span> es la permitividad eléctrica en el medio en el que estamos.</p>
+<p><span class="math inline">\(\epsilon = \epsilon_r \, \epsilon_0\)</span>, siendo <span class="math inline">\(\epsilon_r\)</span> la permitividad eléctrica relativa en el medio en el que estamos y <span class="math inline">\(\epsilon_0\)</span> la permitividad eléctrica en el vacío.</p>
+<p><span class="math inline">\(\vec{H}\)</span> es la fortaleza del campo magnético (<em>magnetic field strength</em>).</p>
+<p><span class="math inline">\(\vec{B}\)</span> se conoce como la densidad del flujo magnético (<em>magnetic flux density</em> tiene otros nombres también; también hay quien lo llama el campo magnético). Análogamente a los fenómenos puramente eléctricos, tenemos aquí que <span class="math inline">\(\vec{B} = \mu \vec{H}\)</span>.</p>
+<p>También, <span class="math inline">\(\mu = \mu_r \, \mu_0\)</span>, siendo <span class="math inline">\(\mu_r\)</span> la permitividad magnética relativa en el medio en el que estamos y <span class="math inline">\(\mu_0\)</span> la permitividad magnética en el vacío.</p>
+<p><span class="math inline">\(\vec{\nabla} \cdot\)</span> es el operador divergencia (en inglés, de forma abreviada, <em>div</em>).</p>
+<p><span class="math inline">\(\vec{\nabla} \times\)</span> es el operador rotacional (en inglés, de forma abreviada, <em>curl</em>).</p>
+<p>Veamos los significados de cada una de estas ecuaciones:</p>
+<section id="primera-ecuación-de-maxwell" class="level3">
+<h3>Primera ecuación de Maxwell</h3>
+<p>La <a href="#mjx-eqn-eq-maxwell-1">primera ecuación de Maxwell</a> no es más que la ley de Gauss del electromagnetismo. Para un medio lineal, es lo mismo que</p>
+<p><span class="math display">\[ \vec{\nabla} \cdot \vec{E} = \frac{\rho}{\epsilon} \]</span></p>
+<p>Es lo mismo que</p>
+<p><span class="math display">\[ \oint_S \vec{D} \, \text{d}\vec{s} = Q \]</span></p>
+<p>Recuerde que <span class="math inline">\(Q\)</span> es la carga eléctrica.</p>
+<!--
+\begin{figure}
+  \includegraphics[width=80pt]{figures/fig-max-1.png}
+  \caption{Primera ley de \cmaxwell{}}
+  \label{fig:max-1}
+\end{figure}
+-->
+<p>La integral de ese vector en toda esa superficie <span class="math inline">\(S\)</span> (es decir, el flujo de <span class="math inline">\(\vec{D}\)</span> en esa superficie <span class="math inline">\(S\)</span>) es igual a la carga encerrada <span class="math inline">\(Q\)</span> en el interior de esa superficie <span class="math inline">\(S\)</span>. Esa carga interna <span class="math inline">\(Q\)</span> es la que genera el campo <span class="math inline">\(\vec{D}\)</span> y, por tanto, el campo <span class="math inline">\(\vec{D}\)</span>.</p>
+<p>Básicamente, lo que viene a decir es que la carga elécrtica produce el campo eléctrico.</p>
+</section>
+<section id="segunda-ecuación-de-maxwell" class="level3">
+<h3>Segunda ecuación de Maxwell</h3>
+<p>Tenemos que</p>
+<p><span class="math display">\[ \vec{\nabla} \times \vec{E} + \frac{\partial \vec{B}}{\partial t} = 0 \]</span></p>
+<p>Significa que el flujo magnético que sale de un volumen fijo es <span class="math inline">\(0\)</span>. Otra forma de decirlo es que no existen monopolos magnéticos. No puede darse un material con magnetismo que solo tenga un polo norte o un polo sur.</p>
+</section>
+<section id="tercera-ecuación-de-maxwell" class="level3">
+<h3>Tercera ecuación de Maxwell</h3>
+<p>Tenemos que</p>
+<p><span class="math display">\[ \vec{\nabla} \times \vec{H} - \frac{\partial \vec{D}}{\partial t} = \vec{J}
+\]</span></p>
+<p>El cambio en el flujo magnético crea un campo eléctrico.</p>
+<p>Si tenemos una trayectoria cerrada <span class="math inline">\(L\)</span> y hacemos la integral de línea de <span class="math inline">\(\vec{E}\)</span> en <span class="math inline">\(L\)</span>, esa integral es proporcional a la variación del flujo magnético en la superficie interna a esa trayectoria.</p>
+<figure>
+<img src="figuras/fig-max-3.png" id="fig-max-3" width="80" alt="" /><figcaption>Tercera Ley de Maxwell</figcaption>
+</figure>
+<p><span class="math display">\[ \oint_L \vec{E}\,\text{d}\vec{l} + \frac{\text{d}}{\text{d} t} \iint_S
+\vec{B}\,\text{d}\vec{s} = 0 \]</span></p>
+<p>O sea que los cambios en los campos magnéticos producen campos eléctricos.</p>
+<p>Inciso: ¿Qué indican div y curl?</p>
+<dl>
+<dt>div</dt>
+<dd><p>Es la integral del flujo que sale de un volumen dividida por ese volumen cuando ese volumen tiende a <span class="math inline">\(0\)</span>.</p>
+<figure>
+<img src="figuras/fig-vol-inf.png" id="fig-vol-inf" width="30" alt="" /><figcaption>Volumen infinitesimal</figcaption>
+</figure>
+<p><span class="math display">\[ \vec{\nabla} \cdot \vec{D} = \lim_{V \to 0} \frac{1}{V} \oint_V
+\vec{D}\,d\vec{s} \]</span></p>
+<p>Imagina que analizas el flujo de un campo <span class="math inline">\(\vec{D}\)</span> (podría ser cualquier campo) en una superficie <span class="math inline">\(S\)</span> que encierra un volumen <span class="math inline">\(V\)</span>. Queremos una propiedad en un punto. Los flujos no se generan uniformemente. Si empezamos a hacer más pequeños esos volúmenes, llegando a un volumen infinitesimal. Así tenemos la propiedad de un solo punto del espacio. Pero si <span class="math inline">\(V\)</span> es infinitesimal, también lo será el flujo. Por eso lo normalizamos dividiendo por <span class="math inline">\(V\)</span>.</p>
+<p>El div indica cuánto late (<em>beats</em>) ese punto del espacio.</p>
+</dd>
+<dt>curl</dt>
+<dd><p>Es algo análogo.</p>
+<p><span class="math display">\[ \vec{\nabla} \times \vec{E} = \lim_{A \to 0} \frac{1}{A}\oint_L
+\vec{E}\,\text{d}\vec{l} \]</span></p>
+<p>Es también el valor de una propiedad en un punto del espacio.</p>
+<p>El curl indica cuánto genera de un campo cerrado circular.</p>
+</dd>
+</dl>
+</section>
+<section id="cuarta-ecuación-de-maxwell" class="level3">
+<h3>Cuarta ecuación de Maxwell</h3>
+<p>Es la ley de Ampère modificada porque la ley de Ampère no tenía la parte <span class="math inline">\(\partial \vec{D}/\partial t\)</span>. Esa parte la añadió Maxwell cuando formuló sus ecuaciones del electromagnetismo, pues pensó que era algo que faltaba.</p>
+<p>Efectivamente, se comprobó experimentalmente que era así. De hecho, esa componente es la que teóricamente dedujo que existían unas cosas llamadas ondas electromagnéticas. Luego, se comprobó experimentalmente que así era (creo que fue Hertz quien demostró experimentalmente su existencia).</p>
+<p>Si tienes una trayectoria cerrada <span class="math inline">\(L\)</span> y hallas la integral de línea de <span class="math inline">\(\vec{H}\)</span> por <span class="math inline">\(L\)</span>, la tasa de cambio del campo eléctrico en la superficie interior a <span class="math inline">\(L\)</span> inducirá TKTKTKTKTK.</p>
+<p>De otra forma, cambios en el campo eléctrico producen un campo magnético.</p>
+<p>La ley de Ampère original, sin la componente <span class="math inline">\(\partial \vec{D}/\partial t\)</span>, decía que el campo magnético en una trayectoria cerrada generada eso es igual a la corriente total en el interior.</p>
+<figure>
+<img src="figuras/fig-ampere-law.png" id="fig-ampere-law" width="60" alt="" /><figcaption>Ley de Ampère</figcaption>
+</figure>
+<p><span class="math display">\[ \oint_L \vec{H}\,\text{d}\vec{l} \]</span></p>
+<p>Es decir, la corriente produce campos magnéticos.</p>
+<p>Entonces, cuando Maxwell estudió estos fenómenos, estudió la simetría de estas ecuaciones y le pareció que la ley de Ampère estaba incompleta. Incluyó entonces la componente <span class="math inline">\(\partial \vec{D}/\partial t\)</span>, a la que comúnmente se la conoce como <em>corriente de desplazamiento</em>.</p>
+<p>Esta fue la base para predecir la existencia de las ondas electromagnéticas. Según esta ecuación, si dos cosas se afectan mutuamente, se tendrá entonces una onda, una perturbación de una propiedad que se propaga (la perturbación).</p>
+<p>La ley de Ampère modificada puede ser también:</p>
+<p><span class="math display">\[\begin{equation}\label{eq:ley-ampere-mod2}
+    \vec{\nabla} \times \vec{B} - \mu \epsilon \frac{\partial \vec{E}}{\partial
+    t} = \mu \vec{J}
+  \end{equation}\]</span></p>
+<p><span class="math inline">\(\vec{J}\)</span> es la densidad de corriente.</p>
+<p>Mezclando esta última ecuación con la ley de Faraday, llegamos a la conclusión de que la velocidad de la onda es de <span class="math inline">\(\left(\sqrt{\mu_0 \, \epsilon_0}\right)^{-1}\)</span>.</p>
+<p>Las constantes <span class="math inline">\(\mu_0\)</span> y <span class="math inline">\(\epsilon_0\)</span> se conocían de los experimentos. Entonces vio Maxwell que coincidía con la velocidad de la luz, lo cual le hizo pensar si la luz es una onda electromagnética.</p>
+<p>Inciso: ¿Vemos la conservación de la carga en esas ecuaciones? ¿Deberíamos tener otra ecuación aparte para la conservación de la carga? Si tomamos la divergencia en ambos lados de la igualdad en la ecuación de la ley de Ampère modificada,</p>
+<p><span class="math display">\[ \vec{\nabla} \cdot (\vec{\nabla} \times \vec{H}) - \frac{\text{d}}{\text{d} t}
+\vec{\nabla} \cdot \vec{D} = \vec{\nabla} \cdot \vec{J} \]</span></p>
+<p>y, puesto que la divergencia de un rotacional es siempre igual a <span class="math inline">\(0\)</span>, en este caso, <span class="math inline">\(\vec{\nabla} \cdot (\vec{\nabla} \times \vec{H}) = 0\)</span> y deducimos que</p>
+<p><span class="math display">\[ \vec{\nabla} \cdot \vec{J} + \frac{\partial \rho}{\partial t} = 0 \]</span></p>
+<p>Esta última es la ecuación que demuestra la conservación de la carga. La suelen llamar <em>ley de la conservación de la carga</em>.</p>
+<p>La tasa de corriente que sale de un sistema es proporcional a la tasa que pierde carga, tal y como puede ver en la ecuación anterior.</p>
+<figure>
+<img src="figuras/fig-ec-cont.png" id="fig-ec-cont" width="80" alt="" /><figcaption>Ecuación de continuidad</figcaption>
+</figure>
+<p><span class="math inline">\(S\)</span> es una superficie cerrada que encierra un volumen <span class="math inline">\(V\)</span>.</p>
+<p>Si integramos la ecuación anterior:</p>
+<p><span class="math display">\[ \oint_S \vec{J} \cdot \text{d}\vec{s} = - \iiint_V \frac{\partial \rho}{\partial
+t} \, \text{d} v = - \frac{\text{d} Q}{\text{d} t} \]</span></p>
+<p>puesto que al integrar la dendidad de carga volumétrica (<span class="math inline">\(\rho\)</span>) sobre un volumen tenemos la carga (<span class="math inline">\(Q\)</span>).</p>
+<p>Esto implica que no podemos crear ni destruir carga eléctrica.</p>
+</section>
+</section>
+</section>
+</article><footer></footer></body>
+</html>
