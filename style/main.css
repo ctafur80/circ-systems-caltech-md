@@ -1,0 +1,671 @@
+
+
+/* @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap'); */
+
+/* El diseño es mobile first */
+
+* {
+  font-family: sans-serif;
+}
+
+html {
+  background: var(--main-bg-color);
+}
+
+/* Layout */
+body {
+  font-size: 15px;
+  display: grid;
+  grid-template-areas:
+    "contenido"
+    "footer";
+}
+
+header {
+  position: fixed;
+  background: var(--header-bg-color);
+  border-radius: 5px;
+  border: 1px solid blue;
+  width: 90%;
+  z-index: 444;
+}
+
+label.nav-toggle-label {
+  position: fixed;
+  right: 0;
+  border-radius: 5px;
+  border: 1px solid blue;
+  width: 60px;
+  height: 60px;
+  background: blue;
+  margin-right: 7px;
+  margin-top: 7px;
+  z-index: 666;
+}
+
+
+article {
+  margin-top: 80px;
+  grid-area: contenido;
+  /* La clave del problema que me llevó mucho tiempo está aquí */
+  overflow-x: scroll;
+  scrollbar-width: none;
+}
+
+footer {
+  grid-area: footer;
+}
+/* / Layout */
+
+
+
+h1, h2, h3, h4, h5, h6,
+.header-section-number {
+  font-weight: bold;
+}
+
+h1.title {
+  padding-top: 0px;
+}
+
+body {
+  color: var(--body-text-color);
+}
+
+a,
+body article a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+
+h1, h2, h3, h4, h5, h6,
+.header-section-number,
+section p {
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-last: always;
+  hyphenate-limit-zone: 8%;
+}
+
+/* Quizás lo puedo quitar */
+section p a {
+  word-wrap: break-word;
+}
+
+article section p a:hover,
+article section ul li a:hover {
+  background-color: var(--hover-link-color);
+}
+
+
+/* a { */
+/*   color: var(--link-color); */
+/* } */
+
+/*
+a[href^='https://'],
+a[href^='http://'],
+a[href^='www.'] {
+  content: "🔗";
+  font-size: 0.75rem;
+  margin-left: 0.3em;
+}
+
+a[href^='#'] {
+  content: "📎";
+  font-size: 0.75rem;
+  margin-left: 0.3em;
+}
+*/
+
+nav#TOC a[href^='#'] {
+  /* content: ""; */
+  font-size: 1.0rem;
+  margin-left: 0.0em;
+}
+
+caption {
+  caption-side: bottom;
+  text-align: left;
+}
+
+blockquote {
+  border-left: 3px solid #eee;
+  margin-left: 20px;
+  padding-left: 20px;
+}
+
+::selection {
+  background-color: var(--mouse-selection-color);
+}
+
+
+
+.quote {
+  font-style: italic;
+}
+
+
+
+/* Tabla de contenidos
+---------------------------------------------------------------------------- */
+nav#TOC {
+  margin-top: 32px;
+  width: 80%;
+  height: 90%;
+  border-radius: 5px;
+  border: 1px dashed blue;
+  position: fixed;
+  z-index: 555;
+  overflow: scroll;
+  font-family: sans-serif;
+  transform: scale(0, 1);
+  transform-origin: left;
+  transition: transform 400ms ease-in-out;
+}
+
+nav#TOC {
+  background-color: var(--toc-bg-color);
+  font-size: 14px;
+}
+
+nav#TOC ul {
+  list-style: none;
+  line-height: 30px;
+  padding-left: 0.9em;
+}
+
+nav#TOC ul a {
+  text-decoration: none;
+  color: var(--toc-fg-color);
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+/* nav#TOC ul:first-child { */
+/*   padding-left: 0.3em; */
+/* } */
+
+nav#TOC ul li span.toc-section-number {
+  padding-right: 0.3em;
+}
+
+nav#TOC ul li a {
+  display: block;
+  width: 100%;
+}
+
+nav#TOC ul li a:hover {
+  color: var(--toc-hover-color);
+  background-color: var(--toc-hover-bg-color);
+}
+
+label span#square {
+  content: " ";
+  width: 100px;
+  height: 100px;
+  background: blue;
+}
+
+/* Interacción del botón (https://www.youtube.com/watch?v=8QKOaTYvYUA) */
+.nav-toggle {
+  position: fixed;
+  right: 0;
+  display: none;
+}
+
+
+.nav-toggle:checked ~ nav#TOC {
+  /* filter: blur(4px); */
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav#TOC a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+/* .nav-toggle-label span, */
+/* .nav-toggle-label span::before */
+/* .nav-toggle-label span::after { */
+/*   content: " "; */
+/*   display: block; */
+/*   background: red; */
+/*   height: 2px; */
+/*   width: 2em; */
+/* } */
+
+
+
+/* Código
+---------------------------------------------------------------------------- */
+code {
+  font-family: monospace;
+  font-size: 0.97em;
+  padding: 0.05em;
+  background-color: var(--code-bg-color);
+  border-radius: 2px;
+}
+
+code * {
+  font-family: monospace, 'Source Code Pro', 'Courier', 'Menlo';
+}
+
+/* section { */
+/*   /1* display: grid; *1/ */
+/*   width: 100%; */
+/* } */
+
+/* Código separado */
+section pre {
+  overflow-x: scroll;
+  border-radius: 7px;
+  background-color: var(--code-bg-color);
+  padding: 0.2em;
+  scrollbar-width: thin;
+}
+
+section pre code {
+  white-space: pre;
+  /* Sirve tanto block como grid, pero el whitespace pre lo fastidia, pues hace
+   * wrapping */
+  display: grid;
+  /* width: 100%; */
+  background-color: var(--code-bg-color);
+}
+
+code.sourceCode co {
+    font-style: italic;
+}
+
+
+
+
+
+/* Mates */
+span.math.display  {
+  overflow-x: scroll;
+  display: grid;
+  /* background-color: red; */
+  /* border-bottom: 1px solid #aaa; */
+  scrollbar-width: thin;
+}
+
+span.math.display::-webkit-scrollbar {
+  width: 6px;
+  height: 2px;
+}
+
+span.math.display::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-color);
+}
+
+span.math.display::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+}
+
+
+/* Tablas
+---------------------------------------------------------------------------- */
+table {
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    border-radius: 5px;
+    x-overflow: scroll;
+    /*background: #EDFAEB;*/
+}
+
+table caption {
+    font-family: sans-serif;
+    font-size: 0.9em;
+}
+
+table th {
+    border-bottom: 3px solid var(--table-border-bottom-color);
+    /* background-color: #E2F1E0; */
+    font-family: 'Roboto', 'Open Sans',  sans-serif;
+    padding: 1ex;
+}
+
+table tbody tr.odd td,
+table tbody tr.odd td a,
+table tbody tr.odd td code {
+    /* padding: 0;
+    margin: 0; */
+    background-color: var(--table-odd-row-color);
+}
+
+table tbody tr.even td,
+table tbody tr.even td a,
+table tbody tr.even td code {
+    /* padding: 0;
+    margin: 0; */
+    background-color: var(--table-even-row-color);
+}
+
+table td {
+    margin: 0;
+    padding: 3px 5px;
+}
+
+dl dt {
+    font-weight: bold;
+}
+
+
+
+p span.added {
+    color: green;
+    background-color: var(--span-added-color);
+}
+
+p span.removed {
+    color: red;
+    background-color: var(--span-removed-color);
+}
+
+#title-page {
+    padding: 100px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Figuras
+---------------------------------------------------------------------------- */
+figure img {
+  display: grid;
+  margin: 0.3em auto;
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+}
+
+/*figure .plot {
+    /*margin: 0 auto;*/
+    /*width: 350px;*/
+    /*max-width: 350px;*/
+/*}*/
+
+div#plots {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 20px;
+}
+
+
+
+
+
+
+
+a.footnoteRef sup{
+  font-size: 0.8em;
+  font-style: italic;
+  color: var(--foot-ref-sup-color);
+}
+
+.caption {
+  font-family: sans-serif;
+  font-size: 0.9em;
+}
+
+
+
+/* Primera página
+---------------------------------------------------------------------------- */
+header {
+  display: grid;
+  grid-template-areas:
+    "title title"
+    "author date";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+header * {
+  font-family: sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+header h1.title {
+  grid-area: title;
+  font-size: 1.55em;
+  margin-bottom: 0;
+}
+
+header p.author {
+  grid-area: author;
+  font-size: 0.85em;
+  display: flex;
+  margin-top: 5px;
+}
+
+header p.date {
+  grid-area: date;
+  font-size: 0.75em;
+  display: flex;
+  margin-top: 5px;
+}
+
+
+
+/* Entornos
+---------------------------------------------------------------------------- */
+
+div.abstract {
+  padding: 3em;
+}
+
+div.abstract p,
+div.abstract p em {
+  font-family: sans-serif;
+}
+
+
+
+div.digresion,
+div.theorem {
+  /*background-color: #748601;
+  border-width: 5px;
+  border-radius: 10px;
+  border-color: #71a651;*/
+  /*display: block;*/
+  /*border-top: 0.1em;*/
+  padding: 0.8em;
+  border-radius: 0.2em;
+  /*background-color: #303030;*/
+  /*color: #748601;*/
+  border: 2px solid var(--env-theorem-color);
+}
+
+
+
+
+
+/* Headings
+---------------------------------------------------------------------------- */
+
+h1 {
+  font-size: 1.35em;
+  padding-top: 1em;
+}
+
+h2 {
+    padding-top: 24px;
+    font-size: 1.22em;
+}
+
+h3 {
+    padding-top: 18px;
+    font-size: 1.12em;
+}
+
+h4 {
+    padding-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+/*dl {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}*/
+
+/*dt:before {
+  content: "";
+  display: block;
+}*/
+
+/*dt, dd {
+    display: inline-flex;
+    float: left;
+}*/
+
+/*dd:after {
+    clear: both;
+}*/
+
+
+kbd {
+  -moz-border-radius: 3px;
+  -moz-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px var(--kbd-shadow-color) inset;
+  -webkit-border-radius: 3px;
+  -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px var(--kbd-shadow-color) inset;
+  background-color: var(--kbd-bg-color);
+  border: 1px solid var(--kbd-border-color);
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px var(--kbd-shadow-color) inset;
+  color: var(--kbd-color);
+  display: inline-block;
+  font-family: sans-serif;
+  /* font-size: 11px; */
+  line-height: 1.4;
+  margin: 0 .1em;
+  padding: .1em .6em;
+  text-shadow: 0 1px 0 var(--kbd-shadow-color);
+  font-size: 0.7em;
+}
+
+
+strong {
+  font-weight: bold;
+}
+
+
+
+/* Containers */
+/* ------------------------------------------------- */
+div.deffinition,
+div.deffinition * {
+  background-color: red;
+  /* word-wrap: break-word; */
+  /* text-align: left; */
+}
+
+div.deffinition {
+  padding: 0.4em;
+}
+
+div.hack p:nth-child(1)::before {
+  content: "💻";
+}
+
+/* div.hack:nth-last-child(1)::after { */
+/*   content: "💻"; */
+/* } */
+
+
+/* Versión para desktop. El diseño es mobile first. */
+@media (min-width: 850px) {
+  body {
+    height: calc(100vh - 16px);
+    grid-template-areas:
+      "header header"
+      "toc contenido"
+      "footer footer";
+    grid-template-columns: minmax(300px, 2fr) 5fr;
+    grid-template-rows: 14vh calc(84.5vh - 16px) 1.5vh;
+    /* Le resto los 8 de márgenes top y bottom */
+  }
+
+  header {
+    grid-template-areas:
+      "title title title title"
+      ". author date .";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  article {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    padding: 0 1em;
+    margin-top: 0;
+  }
+
+  /* /1* Barras de navegación *1/ */
+  nav#TOC::-webkit-scrollbar,
+  article::-webkit-scrollbar {
+    width: 6px;
+    height: 2px;
+  }
+
+  nav#TOC::-webkit-scrollbar-track,
+  article::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-color);
+  }
+
+  nav#TOC::-webkit-scrollbar-thumb,
+  article::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-color);
+  }
+
+  nav#TOC {
+    /* scrollbar-color: #A5BEAD; */
+    /* height: 100vh; */
+    scrollbar-width: thin;
+    overflow-y: scroll;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

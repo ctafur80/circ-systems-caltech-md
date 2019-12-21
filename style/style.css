@@ -1,0 +1,41 @@
+
+div.hack {
+  border-right: 1px dashed #aaa;
+  padding-right: 0.4em;
+}
+
+div.hack > :nth-child(1)::before {
+  content: "Hack -- ";
+  font-style: italic;
+}
+
+/* div.hack > :nth-last-child(1)::after { */
+/*   content: " -- Hack"; */
+/*   font-style: italic; */
+/* } */
+
+
+/* Paquete */
+span.plgin::before {
+  content: "📦";
+  font-size: 0.75rem;
+}
+
+
+
+
+
+span.thm-title {
+  font-style: italic;
+}
+
+span.thm-title::after {
+  font-style: italic;
+  content: " — ";
+}
+
+
+
+
+
+

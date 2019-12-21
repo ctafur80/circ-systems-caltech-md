@@ -1,0 +1,34 @@
+:root {
+  --main-bg-color: rgba(242, 243, 244, 0.50);
+  --body-text-color: rgb(61, 68, 84);
+  536a94
+  --link-color: #536a94;
+  /* --link-color: #667e6e; */
+  --mouse-selection-color: #e4e4e4;
+  --header-bg-color: rgba(242, 243, 244, 0.90);
+  /* --toc-bg-color: rgb(210, 224, 252, 0.60); */
+  --toc-bg-color: rgba(227, 236, 255, 0.95);
+  --toc-fg-color: rgb(35, 39, 46);
+  --toc-hover-color: #748601;
+  --toc-hover-bg-color: #ddd;
+  --foot-ref-sup-color: #667e6e;
+  --env-theorem-color: #a0e8a6;
+  --code-in-heading-color: #a5bead;
+  --code-bg-color: #edf2f9;
+  --span-added-color: #fff3c5;
+  --span-removed-color: #fff3c5;
+  --table-border-bottom-color: var(--toc-fg-color);
+  --table-odd-row-color: var(--toc-bg-color);
+  --table-even-row-color: #f1f1f1;
+  /* --table-border-bottom-color: #748601; */
+  /* --table-odd-row-color: #e3f5e7; */
+  /* --table-even-row-color: #f1f1f1; */
+  --scrollbar-track-color: #f7fff9;
+  --scrollbar-thumb-color: #a5bead;
+  --kbd-bg-color: #f7f7f7;
+  --kbd-color: #333;
+  --kbd-border-color: #ccc;
+  --kbd-shadow-color: #fff;
+  --hover-link-color: var(--toc-bg-color);
+}
+
